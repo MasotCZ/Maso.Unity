@@ -2,9 +2,9 @@
 
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
 using System.Linq;
+using UnityEngine;
 
 namespace Game.Serialization
 {
@@ -55,6 +55,7 @@ namespace Game.Serialization
         //call this at start of the scene
         public void CreateDictionary()
         {
+            Debug.Log("Creating Meta dic: " + preLoadMetaData.Count);
             foreach (var item in preLoadMetaData)
             {
                 RegisterMetaData(item);
@@ -70,6 +71,11 @@ namespace Game.Serialization
 
         public IEnumerable<_T> MetaList<_T>(IMetaDataFilter filter = null) where _T : class, IObjectMeta
         {
+            if (preLoadMetaData.Count != 0)
+            {
+                CreateDictionary();
+            }
+
             //if (!index.ContainsKey(typeof(_T)))
             //{
             //    return new _T[0];
@@ -115,6 +121,7 @@ namespace Game.Serialization
         //Type param not needed but maybe usefull in the future
         public void RegisterMetaData<_T>(_T metadata) where _T : class, IObjectMeta
         {
+            Debug.Log("Loading: " + metadata.Name + " with id: " + metadata.Id);
             _data.Add(metadata.Id, metadata);
         }
 

@@ -7,7 +7,7 @@ namespace Masot.Standard.Input.EventArguments.Mouse.Drag
     {
         public Vector2 Drag { get; }
 
-        public MouseAxisDragEventArgs(Vector2 drag, Vector2 screenPosition, Vector2 worldPosition, IInputData input) : base(screenPosition, worldPosition, input)
+        public MouseAxisDragEventArgs(Vector2 drag, Vector2 screenPosition, Vector3 worldPosition, IInputData input) : base(screenPosition, worldPosition, input)
         {
             Drag = drag;
         }

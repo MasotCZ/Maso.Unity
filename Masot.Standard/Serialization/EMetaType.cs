@@ -2,6 +2,7 @@
 {
     public enum EMetaType
     {
+        None,
         Structure,
         Unit,
         Item

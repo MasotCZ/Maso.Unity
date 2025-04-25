@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Masot.Standard.Input.EventArguments.Mouse.Position;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Masot.Standard.Input.EventArguments.Mouse.Raycast

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Masot.Standard.Utility
 {
@@ -31,7 +30,7 @@ namespace Masot.Standard.Utility
 
     public class Command : ICommand
     {
-        private readonly Action action;
+        Action action;
 
         public Command(Action action)
         {
@@ -75,24 +74,6 @@ namespace Masot.Standard.Utility
         public void Execute()
         {
             collection.Remove(data);
-        }
-    }
-
-    public class CollectionTryRemoveCommand<_T> : ICommand
-    {
-        private readonly ICollection<_T> collection;
-        private readonly _T data;
-
-        public CollectionTryRemoveCommand(ICollection<_T> collection, _T data)
-        {
-            this.collection = collection;
-            this.data = data;
-        }
-
-        public void Execute()
-        {
-            if (collection.Contains(data))
-                collection.Remove(data);
         }
     }
 

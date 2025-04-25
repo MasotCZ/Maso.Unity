@@ -4,7 +4,9 @@ namespace Masot.Standard.Input.InputEvent
 {
     public class InputEventBehaviour : MonoBehaviour
     {
-        IInput? input = null;
+        public AxisMode axisMode;
+
+        private IInput? input = null;
 
         public E_UnityUpdateCycle updateType;
 
@@ -16,6 +18,8 @@ namespace Masot.Standard.Input.InputEvent
         private void OnEnable()
         {
             input = Input.Instance;
+            Debug.Log($"Axis mode: {axisMode}");
+            Input.Instance.SetAxisMode(axisMode);
         }
 
         private void OnDisable()
@@ -73,9 +77,9 @@ namespace Masot.Standard.Input.InputEvent
         private void AddEvent(Event @event)
         {
 #if DEBUG
-            if (LogKeyPresses && @event.current.keyCode != KeyCode.None)
+            if (LogKeyPresses && @event.keyCode != KeyCode.None)
             {
-                Debug.Log($"event: {@event.current.type}|{@event.current.keyCode}");
+                Debug.Log($"event: {@event.type}|{@event.keyCode}");
             }
 #endif
             input!.AddGuiEvent(@event);
